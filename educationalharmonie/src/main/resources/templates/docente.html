@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Docente</title>
+    <link rel="stylesheet" type="text/css" href="css/styles7.css">
+</head>
+<body>
+    
+    <h1>Bienvenido a Educational Harmonie</h1>
+    
+    </style>
+    <script>
+        function toggleForm() {
+            var form = document.getElementById("reportForm");
+            form.classList.toggle("hidden");
+        }
+    </script>
+</head>
+<body>
+    <h1>Grupos</h1>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="grupo : ${grupos}">
+            <td th:text="${grupo.nombre}"></td>
+            <td><a th:href="@{/docentes/grupo/{id}(id=${grupo.id})}">Ver Detalles</a></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h1>Detalles del Grupo</h1>
+    <div th:if="${grupo != null}">
+        <p>Nombre: <span th:text="${grupo.nombre}"></span></p>
+
+        <h2>Reportes</h2>
+        <button onclick="toggleForm()">Crear Reporte</button>
+        <form th:id="reportForm" th:action="@{/docentes/reportar}" method="post" class="hidden">
+            <input type="hidden" name="estudianteId" th:value="${estudianteId}">
+            <label for="nombresEstudiante">Nombres del Estudiante:</label><br>
+            <input type="text" id="nombresEstudiante" name="nombresEstudiante"><br>
+            <label for="apellidosEstudiante">Apellidos del Estudiante:</label><br>
+            <input type="text" id="apellidosEstudiante" name="apellidosEstudiante"><br>
+            <label for="nombresAcudiente">Nombres del Acudiente:</label><br>
+            <input type="text" id="nombresAcudiente" name="nombresAcudiente"><br>
+            <label for="apellidosAcudiente">Apellidos del Acudiente:</label><br>
+            <input type="text" id="apellidosAcudiente" name="apellidosAcudiente"><br>
+            <label for="grupo">Grupo:</label><br>
+            <input type="text" id="grupo" name="grupo" th:value="${grupo.nombre}" readonly><br>
+            <label for="fecha">Fecha:</label><br>
+            <input type="date" id="fecha" name="fecha"><br>
+            <label for="descripcion">Descripción:</label><br>
+            <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br>
+            <label for="accionesTomar">Acciones a Tomar:</label><br>
+            <textarea id="accionesTomar" name="accionesTomar" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Enviar Reporte">
+        </form>
+    </div>
+
+    <hr>
+
+    <h1>Historial de Reportes</h1>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Nombres del Estudiante</th>
+            <th>Apellidos del Estudiante</th>
+            <th>Nombres del Acudiente</th>
+            <th>Apellidos del Acudiente</th>
+            <th>Grupo</th>
+            <th>Descripción</th>
+            <th>Acciones a Tomar</th>
+        </tr>
+        <tr th:each="reporte : ${reportes}">
+            <td th:text="${reporte.fecha}"></td>
+            <td th:text="${reporte.estudiante.nombres}"></td>
+            <td th:text="${reporte.estudiante.apellidos}"></td>
+            <td th:text="${reporte.acudiente.nombres}"></td>
+            <td th:text="${reporte.acudiente.apellidos}"></td>
+            <td th:text="${reporte.grupo.nombre}"></td>
+            <td th:text="${reporte.descripcion}"></td>
+            <td th:text="${reporte.accionesTomar}"></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h1>Historial de Quejas de Acudientes</h1>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+        </tr>
+        <tr th:each="queja : ${quejas}">
+            <td th:text="${queja.fecha}"></td>
+            <td th:text="${queja.descripcion}"></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h1>Cerrar Sesión</h1>
+    <form th:action="@{/logout}" method="get">
+        <input type="submit" value="Cerrar Sesión">
+    </form>
+</body>
+</html>
+

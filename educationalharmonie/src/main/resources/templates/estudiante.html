@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Estudiante</title>
+    <link rel="stylesheet" type="text/css" href="css/styles6.css">
+</head>
+<body>
+
+    <h1>Bienvenido a Educational Harmonie</h1>
+    
+    <title>Historial de Reportes</title>
+</head>
+<body>
+    <h1>Historial de Reportes</h1>
+    <p>Estudiante: <span th:text="${estudiante.nombres}"></span> <span th:text="${estudiante.apellidos}"></span></p>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Acciones a Tomar</th>
+            <th>Grupo</th>
+            <th>Acudiente</th>
+        </tr>
+        <tr th:each="reporte : ${reportes}">
+            <td th:text="${reporte.fecha}"></td>
+            <td th:text="${reporte.descripcion}"></td>
+            <td th:text="${reporte.accionesTomar}"></td>
+            <td th:text="${reporte.estudiante.grupo.nombre}"></td>
+            <td th:text="${reporte.estudiante.acudiente.nombre}"></td>
+        </tr>
+    </table>
+    <a href="/estudiantes/logout">Cerrar Sesión</a>
+</body>
+</html>

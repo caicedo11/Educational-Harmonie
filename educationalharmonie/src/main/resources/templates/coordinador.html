@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Coordinador</title>
+    <link rel="stylesheet" type="text/css" href="css/styles8.css">
+</head>
+<body>
+    
+    <h1>Bienvenido a Educational Harmonie</h1>
+    
+    <!-- Lista de usuarios -->
+    <h2>Usuarios Registrados</h2>
+    <ul>
+        <li th:each="usuario : ${usuarios}">
+            <span th:text="${usuario.nombres}"></span>
+            <span th:text="${usuario.apellidos}"></span>
+            <!-- Agrega más atributos de usuario si es necesario -->
+        </li>
+    </ul>
+    
+    <!-- Lista de grupos -->
+    <h2>Grupos</h2>
+    <ul>
+        <li th:each="grupo : ${grupos}">
+            <span th:text="${grupo.nombre}"></span>
+            <!-- Agrega más atributos de grupo si es necesario -->
+        </li>
+    </ul>
+    
+    <!-- Formulario para crear un nuevo grupo -->
+    <h2>Crear Nuevo Grupo</h2>
+    <form action="/coordinadores/crearGrupo" method="post" th:object="${grupo}">
+        <label for="nombre">Nombre del Grupo:</label>
+        <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>
+        <button type="submit">Crear Grupo</button>
+    </form>
+    
+    <!-- Agregar Estudiante a Grupo -->
+    <h2>Agregar Estudiante a Grupo</h2>
+    <form action="/coordinadores/agregarEstudiante" method="post">
+        <select name="estudianteId">
+            <option th:each="estudiante : ${estudiantes}" th:value="${estudiante.id}" th:text="${estudiante.usuario.nombre}"></option>
+        </select>
+        <input type="hidden" name="grupoId" th:value="${grupoId}">
+        <button type="submit">Agregar Estudiante</button>
+    </form>
+    
+    <!-- Asignar Docente a Grupo -->
+    <h2>Asignar Docente a Grupo</h2>
+    <form action="/coordinadores/asignarDocente" method="post">
+        <select name="docenteId">
+            <option th:each="docente : ${docentes}" th:value="${docente.id}" th:text="${docente.nombre}"></option>
+        </select>
+        <input type="hidden" name="grupoId" th:value="${grupoId}">
+        <button type="submit">Asignar Docente</button>
+    </form>
+    
+    <!-- Agregar Acudiente a Estudiante -->
+    <h2>Agregar Acudiente a Estudiante</h2>
+    <form action="/coordinadores/asignarAcudiente" method="post">
+        <select name="acudienteId">
+            <option th:each="acudiente : ${acudientes}" th:value="${acudiente.id}" th:text="${acudiente.usuario.nombre}"></option>
+        </select>
+        <input type="hidden" name="estudianteId" th:value="${estudianteId}">
+        <button type="submit">Agregar Acudiente</button>
+    </form>
+    
+    <!-- Enlace para cerrar sesión -->
+    <a href="/logout">Cerrar Sesión</a>
+</body>
+</html>

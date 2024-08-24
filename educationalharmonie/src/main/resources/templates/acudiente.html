@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel del Acudiente</title>
+    <link rel="stylesheet" type="text/css" href="css/styles3.css">
+</head>
+<body>
+    
+    <h1>Bienvenido a Educational Harmonie</h1>
+    
+    <!-- Botón para desplegar el formulario de queja -->
+    <button onclick="toggleForm()">Crear Queja</button>
+    
+    <!-- Formulario de queja-->
+    <div id="quejaForm" style="display: none;">
+        <h2>Crear Nueva Queja</h2>
+        <form action="#" th:action="@{/acudientes/quejar}" th:object="${queja}" method="post">
+            <input type="hidden" th:field="*{estudiante.id}" th:value="${estudianteId}"/>
+            <div>
+                <label for="nombres">Nombre del Estudiante:</label>
+                <input type="text" th:value="${estudiante.nombres}" readonly id="nombres"/>
+
+                
+            </div>
+            <div>
+                <label for="apellidos">Apellidos del estudiante:</label>
+                <input type="text" th:value="${estudiante.apellidos}" readonly id="apellidos"/>
+
+            </div>
+            <div>
+                <label for="grupo">Grupo:</label>
+                <input type="text" th:value="${estudiante.grupo}" readonly id="grupo"/>
+
+            </div>
+            <div>
+                <label for="descripcion">Descripción:</label>
+                <textarea rows="4" cols="50" th:field="*{descripcion}" placeholder="Descripción de la queja"></textarea>
+
+            </div>
+            <div>
+                <label for="fecha">Fecha:</label>
+                <input type="date" th:field="*{fecha}" id="fecha"/>
+            </div>
+
+            <button type="submit">Enviar Queja</button>
+        </form>
+    </div>
+    
+    <!-- Lista de quejas enviadas -->
+    <h2>Historial de Quejas</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="queja : ${quejas}">
+                <td th:text="${queja.fecha}">Fecha</td>
+                <td th:text="${queja.descripcion}">Descripción</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!-- Lista de reportes del estudiante asignado -->
+    <h2>Historial de Reportes</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Acciones a Tomar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="reporte : ${reportes}">
+                <td th:text="${reporte.fecha}">Fecha</td>
+                <td th:text="${reporte.descripcion}">Descripción</td>
+                <td th:text="${reporte.accionesTomar}">Acciones a Tomar</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- mostrar/ocultar el formulario de queja -->
+    <script th:inline="javascript">
+        function toggleForm() {
+            var form = document.getElementById('quejaForm');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+    <a href="/logout">Cerrar Sesión</a>
+</body>
+</html>
