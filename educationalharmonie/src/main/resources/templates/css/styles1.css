@@ -20,9 +20,9 @@ body {
     max-width: 500px;
     margin: 50px auto;
     padding: 20px;
-    background: rgb(26, 15, 175);
+    background: rgb(209, 209, 209);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.973);
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
     text-align: center;
 }
 
@@ -52,7 +52,7 @@ input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #dddddda9;
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -60,7 +60,7 @@ input[type="password"] {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #22ddae;
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
@@ -69,5 +69,5 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #22ddae;
 }

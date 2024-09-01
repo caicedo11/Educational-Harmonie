@@ -1,65 +1,99 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #fdfdfd; /* Fondo suave */
+    display: flex;
+    flex-direction: column; /* Asegura que el header y el contenido estén en columna */
+    min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana */
+    text-align: center; /* Centra el texto en el body */
 }
 
-h1, h2 {
-    color: #333;
+/* Estilo para la cabecera */
+header {
+    background-color: #fae902; /* Color de fondo de la barra superior */
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el espacio entre el logo y el nav */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
-p {
-    color: #666;
+/* Ajustar el logo para mantener el tamaño adecuado */
+.logo {
+    max-width: 150px;
 }
 
-a {
-    color: #007BFF;
+/* Estilo para la navegación */
+nav {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos dentro del nav */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos al final del contenedor nav */
+    gap: 15px; /* Espacio entre los elementos de navegación */
+}
+
+nav ul li {
+    margin: 0; /* Elimina el margen para evitar desbordamiento */
+}
+
+nav ul li a {
+    color: rgb(0, 0, 0);
     text-decoration: none;
+    font-weight: bold;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-/* Estilos específicos */
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-h1 {
+/* Estilo para el contenido principal */
+.content {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    margin-top: 80px; /* Espacio para la cabecera fija */
+    padding: 20px;
     text-align: center;
+}
+
+.content h1 {
+    font-size: 3.0em;
+    margin: 30px 0 10px 0;
+}
+
+.content p {
+    font-size: 1.2em;
     margin-bottom: 20px;
 }
 
-p {
-    text-align: center;
-    margin-bottom: 40px;
+.buttons {
+    display: flex; /* Alinea los botones en fila */
+    flex-direction: row; /* Alinea los botones horizontalmente */
+    margin-top: 20px;
 }
 
-div {
-    width: 50%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
+.buttons button {
+    background-color: #6b6b6b56; /* Color de fondo de los botones */
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 5px;
+    cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
 }
 
-h2 {
-    margin-top: 0;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
+.buttons button:hover {
+    background-color: #555555; /* Color de fondo al pasar el ratón por encima */
 }

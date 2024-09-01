@@ -1,4 +1,6 @@
 {
     "liveServer.settings.port": 5501,
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+    "workbench.editor.tabActionLocation": "right",
+    "workbench.editor.showTabs": "multiple"
 }

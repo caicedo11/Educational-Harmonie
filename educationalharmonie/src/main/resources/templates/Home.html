@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Educational Harmonie</title>
-    <link rel="stylesheet" type="text/css" href="css/styles2.css">
+    <title>Educational Harmonie</title>
+    <link rel="stylesheet" href="css/styles2.css">
 </head>
 <body>
+    <header>
+        <img src="tu-logo.png" alt="Educational Harmonie" class="logo"> 
+        <nav>
+            <ul>
+                <li><a href="#">Misión</a></li>
+                <li><a href="#">Visión</a></li>
+                <li><a href="#">Lema</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <img src="/ruta/imagen/logo.png" alt="Logo de Educational Harmonie">
-    <h1>Bienvenido a Educational Harmonie</h1>
-    <p>¡Gestiona la disciplina educativa de manera efectiva y organizada!</p>
-    </div>
-    <ul>
-            <li><a th:href="@{/Login}">Iniciar sesión</a></li>
-            <li><a th:href="@{/Registro}">Registrarse</a></li>
-        </ul>
+    <div class="content">
+        <h1><strong>Bienvenido a Educational Harmonie</strong></h1>
+        <p>Gestiona la disciplina educativa de manera efectiva y organizada.</p>
+        <div class="buttons">
+            <button onclick="window.location.href='Login.html'">Iniciar sesión</button>
+            <button onclick="window.location.href='Registro.html'">Registrarse</button>
+            
+        </div>
     </div>
 </body>
 </html>
